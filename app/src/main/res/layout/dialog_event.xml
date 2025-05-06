@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/calendar_card_background"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tituloEvento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Título Evento"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#0C0C25" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/fechaEvento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fecha"
+            android:textColor="#0C0C25"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/horaEvento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="Hora"
+            android:textColor="#0C0C25"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/descripcionEvento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Descripción del evento."
+        android:textColor="#0C0C25" />
+
+    <Button
+        android:id="@+id/btnCerrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cerrar"
+        android:backgroundTint="#0C0C25"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="end"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"/>
+</LinearLayout>
