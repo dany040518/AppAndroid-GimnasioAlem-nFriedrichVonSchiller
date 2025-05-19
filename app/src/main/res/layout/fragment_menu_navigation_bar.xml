@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:text="INICIO"
                     android:textColor="@android:color/white"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <!-- Botón Calendario -->
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:text="CALENDARIO"
                     android:textColor="@android:color/white"
-                    android:textSize="11sp" />
+                    android:textSize="10sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:text="PERFIL"
                     android:textColor="@android:color/white"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <!-- Botón Salir -->
@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:text="SALIR"
                     android:textColor="@android:color/white"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

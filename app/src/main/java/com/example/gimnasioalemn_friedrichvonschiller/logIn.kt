@@ -2,68 +2,101 @@ package com.example.gimnasioalemn_friedrichvonschiller
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.gimnasioalemn_friedrichvonschiller.databinding.ActivityLogInBinding
-import com.google.firebase.auth.FirebaseAuth
+import com.example.gimnasioalemn_friedrichvonschiller.database.DatabaseHelper
 
 class logIn : AppCompatActivity() {
-    //aqui se inicializan los componentes de la vista
     private lateinit var binding: ActivityLogInBinding
-    private lateinit var auth: FirebaseAuth
+    private lateinit var dbHelper: DatabaseHelper
 
-    //se crea la vista
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLogInBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        auth = FirebaseAuth.getInstance()
-        initComponets()
+
+        // Inicializar DatabaseHelper
+        dbHelper = DatabaseHelper()
+
+        // Configurar el botón de login
+        initComponents()
     }
 
-    //se inicializan los componentes de la vista
-    private fun initComponets() {
+    private fun initComponents() {
         binding.btnIngresar.setOnClickListener {
             login()
         }
+
+        // Mostrar el overlay cuando se hace clic en el botón Datos Personales
+        binding.tvOlvido.setOnClickListener {
+            val openForgotPassword = findViewById<ConstraintLayout>(R.id.openDataForm)
+            openForgotPassword.visibility = View.VISIBLE  // Mostramos el overlay
+        }
+
     }
 
-    //se realiza el login
     private fun login() {
-        val user = binding.etUser.text.toString()
+        val userId = binding.etUser.text.toString().trim()
         val password = binding.etPassword.text.toString()
 
-        //se valida que los campos no esten vacios
-        if (user.isEmpty() || password.isEmpty()) {
-            Toast.makeText(
-                applicationContext,
-                "Por favor, completa todos los campos",
-                Toast.LENGTH_SHORT
-            ).show()
+        if (userId.isEmpty() || password.isEmpty()) {
+            Toast.makeText(applicationContext, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
             return
         }
 
-        //se realiza el login
-        auth.signInWithEmailAndPassword(user, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(applicationContext, "Acceso exitoso", Toast.LENGTH_SHORT).show()
-                    navigateToStart()
+        // Consultar la base de datos usando DatabaseHelper
+        dbHelper.getUserData(userId, object : DatabaseHelper.UserDataCallback {
+            override fun onSuccess(fullName: String, role: String, storedPassword: String, email: String, phoneNumber: String) {
+
+                if (storedPassword == password) {// Validar el password
+                    if (role == "student") {
+                        Toast.makeText(applicationContext, "Acceso exitoso como Estudiante", Toast.LENGTH_SHORT).show()
+                        saveData(role, userId, fullName, email, phoneNumber)
+                        navigateToStartStudents(userId)
+                    } else if (role == "teacher") {
+                        Toast.makeText(applicationContext, "Acceso exitoso como Docente", Toast.LENGTH_SHORT).show()
+                        saveData(role, userId, fullName, email, phoneNumber)
+                        navigateToStartTeachers(userId)
+                    } else if (role == "admin") {
+                        Toast.makeText(applicationContext, "Acceso exitoso como Administrador", Toast.LENGTH_SHORT).show()
+                        //saveData(userId, fullName, email, phoneNumber)
+                        //navigateToStartAdmin()
+                    }
                     finish()
                 } else {
-                    val errorMessage = task.exception?.message ?: "Acceso fallido"
-                    Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_SHORT).show()
+                    // Contraseña incorrecta
+                    Toast.makeText(applicationContext, "Contraseña incorrecta", Toast.LENGTH_SHORT).show()
                 }
             }
+
+            override fun onFailure(errorMessage: String) {
+                // Si el usuario no es encontrado
+                Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
-    //se navega a la vista de inicio
-    private fun navigateToStart() {
-        val intent = Intent(this, start::class.java)
+    private fun navigateToStartStudents(userId: String) {
+        val intent = Intent(this, Start::class.java)
+        startActivity(intent)
+    }
+    private fun navigateToStartTeachers(userId: String) {
+        val intent = Intent(this, Start::class.java)
         startActivity(intent)
     }
 
+    private fun saveData(userRole:String, userId: String, fullName: String, email: String, phoneNumber: String){
+        val sharedPreferences = getSharedPreferences("USER_PREFS", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("USER_ROL", userRole)
+        editor.putString("USER_ID", userId)
+        editor.putString("USER_NAME", fullName)
+        editor.putString("USER_EMAIL", email)
+        editor.putString("USER_PHONE_NUMBER", phoneNumber)
+        editor.apply()
+    }
 }

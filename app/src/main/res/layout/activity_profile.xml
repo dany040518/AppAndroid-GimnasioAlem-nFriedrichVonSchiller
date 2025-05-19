@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profileScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E5E5E5">
+    android:background="@color/white"
+    tools:ignore="ExtraText">
 
-    <!-- Contenedor curvo inferior -->
+    <!-- Título PERFIL -->
     <View
         android:id="@+id/curveContainer"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:background="@drawable/bg_bottom_curve"
         android:rotation="180"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Título PERFIL -->
     <TextView
         android:id="@+id/titlePerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:text="PERFIL"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Contenedor de la tarjeta de perfil -->
     <LinearLayout
@@ -57,28 +58,28 @@
             android:src="@drawable/ic_user" />
 
         <TextView
-            android:id="@+id/fullName"
+            android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Nombre completo\nEstudiante"
+            android:text="Nombre completo"
             android:textAlignment="center"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginVertical="8dp"
-            android:background="#999999" />
+            android:background="@color/darkGray" />
 
         <TextView
-            android:id="@+id/studentId"
+            android:id="@+id/userId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Id Estudiante"
+            android:text="Id"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <!-- Contenedor teléfono y correo -->
@@ -86,22 +87,21 @@
         android:id="@+id/contactCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:background="@drawable/btn_white_rounded"
+        android:elevation="4dp"
         android:orientation="vertical"
         android:padding="16dp"
-        android:elevation="4dp"
-        app:layout_constraintTop_toBottomOf="@id/profileCard"
-        app:layout_constraintTop_margin="20dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileCard"
         app:layout_constraintWidth_percent="0.9">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="24dp"
@@ -109,11 +109,12 @@
                 android:src="@drawable/ic_phone" />
 
             <TextView
+                android:id="@+id/userPhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+57 3124567890"
                 android:layout_marginStart="12dp"
-                android:textSize="16sp" />
+                android:text="phone"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -124,41 +125,66 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_email_blue" />
+                android:src="@drawable/ic_email"
+                app:tint="@color/darkBlue"/>
 
             <TextView
+                android:id="@+id/userEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Estudiante@dominio.com"
                 android:layout_marginStart="12dp"
-                android:textSize="16sp" />
+                android:text="Estudiante@dominio.com"
+                android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
 
     <!-- Botón Datos Personales -->
     <Button
-        android:id="@+id/btnDatosPersonales"
+        android:id="@+id/btnDataForms"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Datos Personales"
-        android:drawableEnd="@drawable/ic_arrow_right"
-        android:backgroundTint="@color/darkGray"
-        android:textColor="@color/black"
-        android:padding="12dp"
         android:layout_marginTop="40dp"
-        app:layout_constraintTop_toBottomOf="@id/contactCard"
-        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/darkGray"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:onClick="openDataForm"
+        android:padding="12dp"
+        android:text="Datos Personales"
+        android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contactCard"
         app:layout_constraintWidth_percent="0.8" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/openDataForm"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparentBlue"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.8"
+            android:src="@color/white" />
+
+        <include
+            layout="@layout/fragment_data_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <include
-        layout="@layout/menu_navigation_bar"
+        layout="@layout/fragment_menu_navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_alignParentBottom="true" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

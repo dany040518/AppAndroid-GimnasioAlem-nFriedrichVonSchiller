@@ -1,0 +1,41 @@
+<!-- data_form.xml -->
+<LinearLayout android:background="@drawable/forms_background"
+    android:gravity="center"
+    android:id="@+id/formLayout"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/formTitle"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Información Personal"
+        android:textColor="@color/darkBlue"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:background="@drawable/btn_white_rounded"
+        android:hint="Nombre Completo"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:textColor="@color/darkBlue" />
+
+    <Button
+        android:backgroundTint="@color/darkBlue"
+        android:id="@+id/btnCloseDataForm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:onClick="closeDataForm"
+        android:text="Cerrar"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+</LinearLayout>

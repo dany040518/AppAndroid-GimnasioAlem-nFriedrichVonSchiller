@@ -23,7 +23,7 @@
         android:contentDescription="Banderas"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="16dp" />
 
     <!-- Contenedor blanco -->
@@ -135,7 +135,10 @@
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp"
             android:layout_marginBottom="24dp"
-            android:layout_gravity="start"/>
+            android:layout_gravity="start"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="openForgotPassword"/>
 
         <!-- Botón ingresar -->
         <Button
