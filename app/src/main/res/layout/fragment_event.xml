@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Título Evento"
-        android:textSize="22sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#0C0C25" />
+        android:textColor="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Fecha"
-            android:textColor="#0C0C25"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_weight="1"
             android:gravity="end"
             android:text="Hora"
-            android:textColor="#0C0C25"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -46,15 +46,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Descripción del evento."
-        android:textColor="#0C0C25" />
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btnCerrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cerrar"
-        android:backgroundTint="#0C0C25"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/darkBlue"
+        android:textColor="@color/white"
         android:layout_gravity="end"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="5dp"/>
