@@ -24,6 +24,30 @@
         android:theme="@style/Theme.GimnasioAlemánFriedrichVonSchiller"
         tools:targetApi="31">
         <activity
+            android:name=".AnnotationsAndFollowUp"
+            android:exported="false" />
+        <activity
+            android:name=".AssignTasks"
+            android:exported="false" />
+        <activity
+            android:name=".SendMessages"
+            android:exported="false" />
+        <activity
+            android:name=".Start"
+            android:exported="false" />
+        <activity
+            android:name=".StartTeachers"
+            android:exported="false" />
+        <activity
+            android:name=".Messages"
+            android:exported="false" />
+        <activity
+            android:name=".StudentTracking"
+            android:exported="false" />
+        <activity
+            android:name=".MyTask"
+            android:exported="false" />
+        <activity
             android:name=".Calendar"
             android:exported="false" />
         <activity
@@ -31,9 +55,6 @@
             android:exported="false" />
         <activity
             android:name=".ForgotPassword"
-            android:exported="false" />
-        <activity
-            android:name=".start"
             android:exported="false" />
         <activity
             android:name=".logIn"

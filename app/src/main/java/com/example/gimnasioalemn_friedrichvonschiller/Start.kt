@@ -5,18 +5,19 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.example.gimnasioalemn_friedrichvonschiller.database.DatabaseHelper
-import com.example.gimnasioalemn_friedrichvonschiller.databinding.ActivityStartStudentsBinding
+import com.example.gimnasioalemn_friedrichvonschiller.databinding.ActivityStartBinding
 import com.example.gimnasioalemn_friedrichvonschiller.utils.NavigationBarHelper
 
-class StartStudents : AppCompatActivity() {
-    private lateinit var binding: ActivityStartStudentsBinding
+class Start : AppCompatActivity() {
+    private lateinit var binding: ActivityStartBinding
     private lateinit var dbHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityStartStudentsBinding.inflate(layoutInflater)
+        binding = ActivityStartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         dbHelper = DatabaseHelper()// Inicializar DatabaseHelper
@@ -35,7 +36,14 @@ class StartStudents : AppCompatActivity() {
         val navigationBarHelper = NavigationBarHelper(this)
         navigationBarHelper.setupNavigationBar(binding.root)
 
-        if (userRole == "student")
+        //Configuracion gestion por roles
+        binding.TeacherManagement.isVisible= userRole == "teacher"
+        binding.TeacherManagement.isEnabled= userRole == "teacher"
+
+        binding.StudentsManagement.isVisible= userRole == "student"
+        binding.StudentsManagement.isEnabled= userRole == "student"
+
+
     }
 
     private fun initComponents() {

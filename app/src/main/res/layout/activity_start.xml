@@ -5,12 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:layout_marginHorizontal="4dp">
 
     <FrameLayout
         android:id="@+id/upContainer"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:background="@color/darkGray"
         android:layout_marginBottom="40dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -60,7 +61,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="end|top"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/circle_yellow"
             android:scaleType="center"
@@ -82,14 +83,14 @@
         <!-- Botón Seguimiento Escolar -->
         <FrameLayout
             android:id="@+id/btnStudentTracking"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/btn_dark_blue_rounded">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_school_monitoring" />
@@ -102,20 +103,20 @@
                 android:gravity="center"
                 android:text="Seguimiento Escolar"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="13sp" />
         </FrameLayout>
 
         <!-- Botón Horario de Clases -->
         <FrameLayout
             android:id="@+id/btnClassSchedule"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/btn_dark_blue_rounded">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_class_schedule" />
@@ -128,19 +129,19 @@
                 android:gravity="center"
                 android:text="Horario de Clases"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
         </FrameLayout>
 
         <!-- Botón Mis Tareas -->
         <FrameLayout
             android:id="@+id/btnMyTasks"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:background="@drawable/btn_dark_blue_rounded">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_my_tasks" />
@@ -153,7 +154,7 @@
                 android:gravity="center"
                 android:text="Mis Tareas"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
         </FrameLayout>
     </LinearLayout>
 
@@ -171,14 +172,14 @@
         <!-- Botón Seguimiento Escolar -->
         <FrameLayout
             android:id="@+id/btnAnnotationsAndFollowUp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/btn_dark_blue_rounded">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_annotations_and_follow_up" />
@@ -191,20 +192,20 @@
                 android:gravity="center"
                 android:text="Anotaciones y Seguimiento"
                 android:textColor="@android:color/white"
-                android:textSize="15sp" />
+                android:textSize="12sp" />
         </FrameLayout>
 
         <!-- Botón Horario de Clases -->
         <FrameLayout
             android:id="@+id/btnMySchedule"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/btn_dark_blue_rounded">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_class_schedule" />
@@ -217,19 +218,19 @@
                 android:gravity="center"
                 android:text="Mi Horario"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
         </FrameLayout>
 
         <!-- Botón Mis Tareas -->
         <FrameLayout
             android:id="@+id/btnAssignTasks"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:background="@drawable/btn_dark_blue_rounded">
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_assign_tasks" />
@@ -242,7 +243,7 @@
                 android:gravity="center"
                 android:text="Asignar Tareas"
                 android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
         </FrameLayout>
     </LinearLayout>
 
@@ -251,7 +252,7 @@
         android:id="@+id/tvGaleria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         android:paddingBottom="4dp"
         android:text="Galería"
@@ -266,7 +267,6 @@
         android:id="@+id/scrollViewGaleria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:fillViewport="true"
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"

@@ -50,7 +50,7 @@
 
     <!-- Botón de navegación -->
     <include
-        layout="@layout/menu_navigation_bar"
+        layout="@layout/fragment_menu_navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
