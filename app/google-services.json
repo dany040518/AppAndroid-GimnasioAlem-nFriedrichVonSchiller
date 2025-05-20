@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "565087834798",
+    "firebase_url": "https://gimnasioalemanfriedrichv-b11ff-default-rtdb.firebaseio.com",
+    "project_id": "gimnasioalemanfriedrichv-b11ff",
+    "storage_bucket": "gimnasioalemanfriedrichv-b11ff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565087834798:android:5b46016bd1eb3a0f10d33f",
+        "android_client_info": {
+          "package_name": "com.example.gimnasioalemn_friedrichvonschiller"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPLEvMAF8mCR8jS2t5r6LG7UZVAQChsjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
