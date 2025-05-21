@@ -7,7 +7,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.gimnasioalemn_friedrichvonschiller.MainActivity
 import com.example.gimnasioalemn_friedrichvonschiller.Start
 import com.example.gimnasioalemn_friedrichvonschiller.Profile
-import com.example.gimnasioalemn_friedrichvonschiller.Calendar
 import com.example.gimnasioalemn_friedrichvonschiller.databinding.FragmentMenuNavigationBarBinding
 
 class NavigationBarHelper(private val context: Context) {

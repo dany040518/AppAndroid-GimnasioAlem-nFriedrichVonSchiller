@@ -126,19 +126,7 @@
             android:background="@android:color/black"
             android:layout_marginBottom="8dp" />
 
-        <!-- Enlace de olvidar contraseña -->
-        <TextView
-            android:id="@+id/tvOlvido"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="¿Olvidó su contraseña?"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp"
-            android:layout_marginBottom="24dp"
-            android:layout_gravity="start"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="openForgotPassword"/>
+
 
         <!-- Botón ingresar -->
         <Button

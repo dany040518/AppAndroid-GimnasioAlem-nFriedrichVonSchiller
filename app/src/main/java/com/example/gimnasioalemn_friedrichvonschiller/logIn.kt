@@ -3,7 +3,6 @@ package com.example.gimnasioalemn_friedrichvonschiller
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -30,13 +29,6 @@ class logIn : AppCompatActivity() {
         binding.btnIngresar.setOnClickListener {
             login()
         }
-
-        // Mostrar el overlay cuando se hace clic en el botón Datos Personales
-        binding.tvOlvido.setOnClickListener {
-            val openForgotPassword = findViewById<ConstraintLayout>(R.id.openDataForm)
-            openForgotPassword.visibility = View.VISIBLE  // Mostramos el overlay
-        }
-
     }
 
     private fun login() {
