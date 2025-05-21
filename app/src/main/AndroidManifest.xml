@@ -30,13 +30,7 @@
             android:name=".AssignTasks"
             android:exported="false" />
         <activity
-            android:name=".SendMessages"
-            android:exported="false" />
-        <activity
             android:name=".Start"
-            android:exported="false" />
-        <activity
-            android:name=".StartTeachers"
             android:exported="false" />
         <activity
             android:name=".Messages"
@@ -49,16 +43,13 @@
             android:exported="false" />
         <activity
             android:name=".Calendar"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".Profile"
-            android:exported="false" />
-        <activity
-            android:name=".ForgotPassword"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".logIn"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
