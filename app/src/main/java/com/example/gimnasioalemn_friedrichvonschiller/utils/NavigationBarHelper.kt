@@ -17,10 +17,10 @@ class NavigationBarHelper(private val context: Context) {
         binding.btnInicio.setOnClickListener {
             navigateToStart()
         }
-
+/*
         binding.btnCalendario.setOnClickListener {
             navigateToCalendar()
-        }
+        }*/
 
         binding.btnPerfil.setOnClickListener {
             navigateToProfile()
@@ -35,11 +35,11 @@ class NavigationBarHelper(private val context: Context) {
         val intent = Intent(context, Start::class.java)
         context.startActivity(intent)
     }
-
+/*
     private fun navigateToCalendar() {
-        /*val intent = Intent(context, Calendar::class.java)
-        context.startActivity(intent)*/
-    }
+        val intent = Intent(context, Calendar::class.java)
+        context.startActivity(intent)
+    }*/
 
     private fun navigateToProfile() {
         val intent = Intent(context, Profile::class.java)
