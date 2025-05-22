@@ -6,8 +6,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper {
     private DatabaseReference database;
@@ -49,7 +49,6 @@ public class DatabaseHelper {
                 // Pasar todos los datos al callback
                 callback.onSuccess(fullName, role, storedPassword, email, phoneNumber);
             }
-
             @Override
             public void onFailure(String errorMessage) {
                 callback.onFailure(errorMessage);
@@ -57,63 +56,60 @@ public class DatabaseHelper {
         });
     }
 
-    // Metodo para obtener las tareas de un estudiante
-    public void getStudentTasks(String userId, final TaskDataCallback callback) {
-        getData("users/" + userId + "/tasks", new DataCallback() {
-            @Override
-            public void onSuccess(DataSnapshot dataSnapshot) {
-                for (DataSnapshot taskSnapshot : dataSnapshot.getChildren()) {
-                    String taskTitle = taskSnapshot.child("task_title").getValue(String.class);
-                    String subject = taskSnapshot.child("subject").getValue(String.class);
-                    String dueDate = taskSnapshot.child("due_date").getValue(String.class);
-                    String status = taskSnapshot.child("status").getValue(String.class);
-                    callback.onTaskReceived(taskTitle, subject, dueDate, status);
-                }
-            }
-
-            @Override
-            public void onFailure(String errorMessage) {
-                callback.onFailure(errorMessage);
-            }
-        });
+    // Traer datos específicos del estudiante, por ejemplo el "grade"
+    public void getStudentData(String userId, final StudentDataCallback callback) {
+        database.child("users").child(userId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            String role = snapshot.child("role").getValue(String.class);
+                            if ("student".equals(role)) {
+                                String grade = snapshot.child("grade").getValue(String.class);
+                                callback.onSuccess(grade);
+                            } else {
+                                callback.onFailure("El usuario no es un estudiante");
+                            }
+                        } else {
+                            callback.onFailure("Usuario no encontrado");
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        callback.onFailure("Error al obtener datos: " + error.getMessage());
+                    }
+                });
     }
 
-    // Metodo para obtener todos los eventos de un grado específico
-    public void getGradeEvents(final EventDataCallback callback) {
-        getData("events/" , new DataCallback() {
-            @Override
-            public void onSuccess(DataSnapshot dataSnapshot) {
-                for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
-                    String title = eventSnapshot.child("title").getValue(String.class);
-                    String time = eventSnapshot.child("time").getValue(String.class);
-                    String date = eventSnapshot.child("date").getValue(String.class);
-                    String description = eventSnapshot.child("description").getValue(String.class);
-                    callback.onEventReceived(title, date, time, description);
-                }
-            }
-
-            @Override
-            public void onFailure(String errorMessage) {
-                callback.onFailure(errorMessage);
-            }
-        });
+    // Traer datos específicos del teacher
+    public void getTeacherData(String userId, final TeacherDataCallback callback) {
+        database.child("users").child(userId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            String role = snapshot.child("role").getValue(String.class);
+                            if ("teacher".equals(role)) {
+                                List<String> subjectsList = new ArrayList<>();
+                                for (DataSnapshot subjectSnapshot : snapshot.child("subjects").getChildren()) {
+                                    String subject = subjectSnapshot.getValue(String.class);
+                                    subjectsList.add(subject);
+                                }
+                                callback.onSuccess(subjectsList);
+                            } else {
+                                callback.onFailure("El usuario no es un profesor");
+                            }
+                        } else {
+                            callback.onFailure("Usuario no encontrado");
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        callback.onFailure("Error al obtener datos: " + error.getMessage());
+                    }
+                });
     }
 
-    // Metodo para crear un evento
-    public void createEvent(String userId, String title, String date, String description) {
-            String eventId = database.child("events").push().getKey();
-
-            // Usamos un Map para almacenar los detalles del evento
-            Map<String, Object> event = new HashMap<>();
-            event.put("title", title);
-            event.put("date", date);
-            event.put("description", description);
-
-            // Guardamos el evento en Firebase Realtime Database
-            database.child("events").child(eventId).setValue(event);
-    }
-
-    // Interfaces de callback para los diferentes tipos de datos
     public interface DataCallback {
         void onSuccess(DataSnapshot dataSnapshot);
         void onFailure(String errorMessage);
@@ -124,19 +120,13 @@ public class DatabaseHelper {
         void onFailure(String errorMessage);
     }
 
-
-    public interface TaskDataCallback {
-        void onTaskReceived(String taskTitle, String subject, String dueDate, String status);
+    public interface StudentDataCallback {
+        void onSuccess(String grade);
         void onFailure(String errorMessage);
     }
 
-    public interface EventDataCallback {
-        void onEventReceived(String title, String date, String time, String description);
-        void onFailure(String errorMessage);
-    }
-
-    public interface ScheduleDataCallback {
-        void onScheduleReceived(String time, String subject, String teacher);
+    public interface TeacherDataCallback {
+        void onSuccess(List<String> subjects);
         void onFailure(String errorMessage);
     }
 }

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/etNombreMensaje"
+        android:id="@+id/etTittleMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Titulo del Anuncio"
@@ -22,7 +22,7 @@
         android:layout_marginTop="16dp" />
 
     <EditText
-        android:id="@+id/etDescripcionMensaje"
+        android:id="@+id/etDescriptionMenssage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Descripción del Anuncio"

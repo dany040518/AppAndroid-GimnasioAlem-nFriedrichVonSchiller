@@ -2,6 +2,7 @@ package com.example.gimnasioalemn_friedrichvonschiller
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -46,13 +47,31 @@ class logIn : AppCompatActivity() {
 
                 if (storedPassword == password) {// Validar el password
                     if (role == "student") {
-                        Toast.makeText(applicationContext, "Acceso exitoso como Estudiante", Toast.LENGTH_SHORT).show()
-                        saveData(role, userId, fullName, email, phoneNumber)
-                        navigateToStartStudents(userId)
+                        dbHelper.getStudentData(userId, object : DatabaseHelper.StudentDataCallback {
+                            override fun onSuccess(grade: String) {
+                                Toast.makeText(applicationContext, "Acceso exitoso como Estudiante", Toast.LENGTH_SHORT).show()
+                                saveDataStudent(role, userId, fullName, email, phoneNumber, grade)
+                                navigateToStartStudents(userId)
+                            }
+                            override fun onFailure(errorMessage: String) {
+                                Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_SHORT).show()
+                            }
+                        })
                     } else if (role == "teacher") {
-                        Toast.makeText(applicationContext, "Acceso exitoso como Docente", Toast.LENGTH_SHORT).show()
-                        saveData(role, userId, fullName, email, phoneNumber)
-                        navigateToStartTeachers(userId)
+                        dbHelper.getTeacherData(userId, object : DatabaseHelper.TeacherDataCallback {
+                            override fun onSuccess(subjects: List<String>) {
+                                Toast.makeText(applicationContext, "Acceso exitoso como Docente", Toast.LENGTH_SHORT).show()
+
+                                // Por ejemplo, convertir la lista a String separada por comas para guardar en SharedPreferences
+                                val subjectsString = subjects.joinToString(", ")
+
+                                saveDataTeacher(role, userId, fullName, email, phoneNumber, subjectsString)
+                                navigateToStartTeachers(userId)
+                            }
+                            override fun onFailure(errorMessage: String) {
+                                Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_SHORT).show()
+                            }
+                        })
                     } else if (role == "admin") {
                         Toast.makeText(applicationContext, "Acceso exitoso como Administrador", Toast.LENGTH_SHORT).show()
                         //saveData(userId, fullName, email, phoneNumber)
@@ -81,7 +100,7 @@ class logIn : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun saveData(userRole:String, userId: String, fullName: String, email: String, phoneNumber: String){
+    private fun saveDataStudent(userRole:String, userId: String, fullName: String, email: String, phoneNumber: String, grade: String){
         val sharedPreferences = getSharedPreferences("USER_PREFS", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("USER_ROL", userRole)
@@ -89,6 +108,19 @@ class logIn : AppCompatActivity() {
         editor.putString("USER_NAME", fullName)
         editor.putString("USER_EMAIL", email)
         editor.putString("USER_PHONE_NUMBER", phoneNumber)
+        editor.putString("USER_GRADE", grade)
+        editor.apply()
+    }
+
+    private fun saveDataTeacher(userRole:String, userId: String, fullName: String, email: String, phoneNumber: String, subjects: String){
+        val sharedPreferences = getSharedPreferences("USER_PREFS", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("USER_ROL", userRole)
+        editor.putString("USER_ID", userId)
+        editor.putString("USER_NAME", fullName)
+        editor.putString("USER_EMAIL", email)
+        editor.putString("USER_PHONE_NUMBER", phoneNumber)
+        editor.putString("USER_SUBJECTS", subjects)
         editor.apply()
     }
 }

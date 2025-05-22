@@ -1,67 +1,101 @@
 package com.example.gimnasioalemn_friedrichvonschiller
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.example.gimnasioalemn_friedrichvonschiller.database.DatabaseHelper
+import com.example.gimnasioalemn_friedrichvonschiller.database.MessagesHelper
 import com.example.gimnasioalemn_friedrichvonschiller.databinding.ActivityMessagesBinding
+import com.example.gimnasioalemn_friedrichvonschiller.model.Message
 import com.example.gimnasioalemn_friedrichvonschiller.utils.NavigationBarHelper
 
 class Messages : AppCompatActivity() {
+
     private lateinit var binding: ActivityMessagesBinding
-    private lateinit var dbHelper: DatabaseHelper
+    private lateinit var messagesHelper: MessagesHelper
+
+    private var userRole: String? = null
+    private var userGrade: String? = null
+    private var userName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMessagesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        dbHelper = DatabaseHelper()// Inicializar DatabaseHelper
-        initComponents()
+        // Inicializar helper
+        messagesHelper = MessagesHelper()
 
-        //Traer datos
+        // Leer SharedPreferences aquí
         val sharedPreferences = getSharedPreferences("USER_PREFS", MODE_PRIVATE)
-        val userRole = sharedPreferences.getString("USER_ROL", null)
-        val userId = sharedPreferences.getString("USER_ID", null)
-        val userName = sharedPreferences.getString("USER_NAME", null)
-        val userEmail = sharedPreferences.getString("USER_EMAIL", null)
-        val userPhoneNumber = sharedPreferences.getString("USER_PHONE_NUMBER", null)
+        userRole = sharedPreferences.getString("USER_ROL", null)
+        userGrade = sharedPreferences.getString("USER_GRADE", null)
+        userName = sharedPreferences.getString("USER_NAME", null)
 
-        // Configurar el menú de navegación
+        setupUI()
+        initComponents()
+        loadMessages()
+    }
+
+    private fun setupUI() {
         val navigationBarHelper = NavigationBarHelper(this)
         navigationBarHelper.setupNavigationBar(binding.root)
 
-        //Configuracion gestion por roles
         binding.btnMessage.isVisible = userRole == "teacher"
         binding.btnMessage.isEnabled = userRole == "teacher"
 
         binding.tvNameGrade.isVisible = userRole == "student"
         binding.tvNameGrade.isEnabled = userRole == "student"
+        binding.viewBlack.isVisible = userRole == "student"
+        binding.viewBlack.isEnabled = userRole == "student"
+
+        binding.tvNameGrade.text = userGrade ?: ""
     }
 
     private fun initComponents() {
         binding.btnMessage.setOnClickListener {
-            // Mostrar el fragmento
             showCreateMessageFragment()
         }
     }
 
     private fun showCreateMessageFragment() {
-        // Hacer visible el contenedor
         binding.containerCreateMessage.visibility = View.VISIBLE
-
-        // Bloquear interacción con la Activity debajo (opcional)
         binding.root.isEnabled = false
 
-        // Agregar fragmento
         supportFragmentManager.beginTransaction()
             .replace(binding.containerCreateMessage.id, CreateMessage())
-            .addToBackStack(null) // Permite cerrar el fragmento con el botón Atrás
+            .addToBackStack(null)
             .commit()
     }
 
+    private fun loadMessages() {
+        when {
+            userRole == "student" && !userGrade.isNullOrEmpty() -> {
+                messagesHelper.getMessagesByGrade(
+                    userGrade!!,
+                    onResult = { messagesList -> setupRecyclerView(messagesList) },
+                    onError = { showError(it) }
+                )
+            }
+            userRole == "teacher" && !userName.isNullOrEmpty() -> {
+                messagesHelper.getMessagesByTeacher(
+                    userName!!,
+                    onResult = { messagesList -> setupRecyclerView(messagesList) },
+                    onError = { showError(it) }
+                )
+            }
+            else -> {
+                Toast.makeText(this, "Rol o datos de usuario inválidos", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
+    private fun setupRecyclerView(messagesList: List<Message>) {
+        // TODO: Implementa aquí la configuración de tu RecyclerView con el adapter que muestre los mensajes
+    }
 
+    private fun showError(message: String) {
+        Toast.makeText(this, "Error al cargar mensajes: $message", Toast.LENGTH_SHORT).show()
+    }
 }
