@@ -59,6 +59,9 @@ class Start : AppCompatActivity() {
         binding.btnStudentTracking.setOnClickListener {
             navigateToStudentTracking()
         }
+        binding.btnAssignTasks.setOnClickListener {
+            navigateToAssignTasks()
+        }
     }
 
     private fun getImagesGalery(): List<String> {
@@ -114,6 +117,11 @@ class Start : AppCompatActivity() {
 
     private fun navigateToStudentTracking() {
         val intent = Intent(this, StudentTracking::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToAssignTasks(){
+        val intent = Intent(this, AssignTasks::class.java)
         startActivity(intent)
     }
 }
