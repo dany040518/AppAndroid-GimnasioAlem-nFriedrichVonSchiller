@@ -5,5 +5,6 @@ data class Task (
     var fecha: String? = "",
     var asignatura: String? = "",
     var grado: String? = "",
-    var estado: String? = "pendiente"
+    var estado: String? = "pendiente",
+    var id: String = ""
 )

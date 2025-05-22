@@ -39,7 +39,7 @@
             android:name=".StudentTracking"
             android:exported="false" />
         <activity
-            android:name=".MyTask"
+            android:name=".MyTasks.MyTask"
             android:exported="false" />
         <activity
             android:name=".Calendar"
