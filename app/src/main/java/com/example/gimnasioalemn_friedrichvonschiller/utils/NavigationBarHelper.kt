@@ -37,8 +37,8 @@ class NavigationBarHelper(private val context: Context) {
     }
 
     private fun navigateToCalendar() {
-        val intent = Intent(context, Calendar::class.java)
-        context.startActivity(intent)
+        /*val intent = Intent(context, Calendar::class.java)
+        context.startActivity(intent)*/
     }
 
     private fun navigateToProfile() {

@@ -1,11 +1,14 @@
 package com.example.gimnasioalemn_friedrichvonschiller
 
 import android.R
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.gimnasioalemn_friedrichvonschiller.database.TaskHelper
 import com.example.gimnasioalemn_friedrichvonschiller.databinding.ActivityAssignTasksBinding
+import com.example.gimnasioalemn_friedrichvonschiller.model.Task
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -24,7 +27,7 @@ class AssignTasks : AppCompatActivity() {
     }
 
     private fun initUI() {
-        val grados = arrayOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+        val grados = arrayOf("Parvulos", "Prekinder", "Kinder", "Kl1", "Kl2", "Kl3", "Kl4", "Kl5", "Kl6", "Kl7", "Kl8", "Kl9", "Kl10", "Kl11", "Kl12")
         // Crea un ArrayAdapter para llenar el Spinner
         val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, grados)
         // Especifica el layout para el dropdown del Spinner
@@ -38,46 +41,73 @@ class AssignTasks : AppCompatActivity() {
         binding.btnAsignarTarea.setOnClickListener {
             validateParams()
         }
+        binding.etFechaEntrega.setOnClickListener {
+            // Obtener fecha actual para que el DatePicker empiece en hoy
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            // Crear el DatePickerDialog
+            val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDayOfMonth ->
+                // selectedMonth va de 0 a 11, así que le sumamos 1 para mostrar bien
+                val fechaSeleccionada = String.format("%02d/%02d/%d", selectedDayOfMonth, selectedMonth + 1, selectedYear)
+                binding.etFechaEntrega.setText(fechaSeleccionada)
+            }, year, month, day)
+
+            // Mostrar el DatePicker
+            datePickerDialog.show()
+        }
     }
 
     private fun validateParams() {
         val grado = binding.spinnerGrado.selectedItem.toString()
-        val tarea = binding.etTitulo.text.toString().trim()
+        val titulo = binding.etTitulo.text.toString().trim()
         val fecha = binding.etFechaEntrega.text.toString().trim()
         val asignatura = binding.etAsignatura.text.toString().trim()
 
         // Validación de que el campo de título no esté vacío
-        if (tarea.isEmpty() || grado.isEmpty() || grado == "Seleccionar grado" || fecha.isEmpty() || asignatura.isEmpty()) {
+        if (titulo.isEmpty() || grado.isEmpty() || grado == "Seleccionar grado" || fecha.isEmpty() || asignatura.isEmpty()) {
             Toast.makeText(this, "Llene todos los campos.", Toast.LENGTH_SHORT).show()
             return
         }
-        if(!validateDate(fecha)) asignarTarea(grado, tarea, fecha)
-
-
+        if(validateDate(fecha)) asignarTarea(Task(titulo, fecha, asignatura, grado))
+        else Toast.makeText(this, "La fecha de entrega no puede ser antes de la fecha actual.", Toast.LENGTH_SHORT).show()
     }
 
-    private fun validateDate(fecha: String): Boolean{
-        // Validación de que la fecha seleccionada no sea antes de la fecha actual
+    private fun validateDate(fecha: String): Boolean {
         val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        val fechaActual = Calendar.getInstance().time
-        val fechaSeleccionada: Date?
+        return try {
+            val fechaSeleccionada = Calendar.getInstance().apply {
+                time = sdf.parse(fecha) ?: return false
+                set(Calendar.HOUR_OF_DAY, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
 
-        try {
-            fechaSeleccionada = sdf.parse(fecha)
-            if (fechaSeleccionada.before(fechaActual)) {
+            val hoy = Calendar.getInstance().apply {
+                set(Calendar.HOUR_OF_DAY, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+
+            if (fechaSeleccionada.before(hoy)) {
                 Toast.makeText(this, "La fecha de entrega no puede ser antes de la fecha actual.", Toast.LENGTH_SHORT).show()
-                return false
+                false
+            } else {
+                true
             }
         } catch (e: Exception) {
             Toast.makeText(this, "Formato de fecha incorrecto.", Toast.LENGTH_SHORT).show()
-            return false
+            false
         }
-        return true
     }
 
-    private fun asignarTarea(grado: String, tarea: String, fecha: String) {
-        // Aquí puedes agregar la lógica para asignar la tarea
-        // Por ejemplo, guardar en la base de datos o enviar a un servidor
-        Toast.makeText(this, "Tarea asignada a grado $grado: $tarea con fecha de entrega $fecha", Toast.LENGTH_SHORT).show()
+
+    private fun asignarTarea(tarea: Task) {
+        TaskHelper().asignarTarea(tarea)
+        Toast.makeText(this, "Tarea asignada a grado ${tarea.grado}: ${tarea.titulo} con fecha de entrega ${tarea.fecha}", Toast.LENGTH_SHORT).show()
     }
 }
