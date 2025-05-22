@@ -63,6 +63,9 @@ class Start : AppCompatActivity() {
         binding.btnAssignTasks.setOnClickListener {
             navigateToAssignTasks()
         }
+        binding.btnAnnotationsAndFollowUp.setOnClickListener {
+            navigateToAnnotationsAndFollowUp()
+        }
     }
 
     private fun getImagesGalery(): List<String> {
@@ -123,6 +126,11 @@ class Start : AppCompatActivity() {
 
     private fun navigateToAssignTasks(){
         val intent = Intent(this, AssignTasks::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToAnnotationsAndFollowUp(){
+        val intent = Intent(this, AnnotationsAndFollowUp::class.java)
         startActivity(intent)
     }
 }
