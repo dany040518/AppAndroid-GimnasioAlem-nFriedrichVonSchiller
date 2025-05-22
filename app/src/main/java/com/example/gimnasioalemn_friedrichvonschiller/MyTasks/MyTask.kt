@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gimnasioalemn_friedrichvonschiller.database.TaskHelper
 import com.example.gimnasioalemn_friedrichvonschiller.databinding.ActivityMyTaskBinding
 import com.example.gimnasioalemn_friedrichvonschiller.model.Task
+import com.example.gimnasioalemn_friedrichvonschiller.utils.NavigationBarHelper
 
 class MyTask : AppCompatActivity() {
 
@@ -19,6 +20,10 @@ class MyTask : AppCompatActivity() {
         binding = ActivityMyTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getTasks()
+
+        // Configurar el menú de navegación
+        val navigationBarHelper = NavigationBarHelper(this)
+        navigationBarHelper.setupNavigationBar(binding.root)
     }
 
     private fun initUI() {

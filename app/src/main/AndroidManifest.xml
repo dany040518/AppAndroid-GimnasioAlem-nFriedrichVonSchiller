@@ -33,7 +33,7 @@
             android:name=".Start"
             android:exported="false" />
         <activity
-            android:name=".Messages"
+            android:name=".Messages.Messages"
             android:exported="false" />
         <activity
             android:name=".StudentTracking"

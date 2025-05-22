@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
+import com.example.gimnasioalemn_friedrichvonschiller.Messages.Messages
 import com.example.gimnasioalemn_friedrichvonschiller.MyTasks.MyTask
 import com.example.gimnasioalemn_friedrichvonschiller.database.DatabaseHelper
 import com.example.gimnasioalemn_friedrichvonschiller.databinding.ActivityStartBinding
@@ -62,6 +63,9 @@ class Start : AppCompatActivity() {
         }
         binding.btnAssignTasks.setOnClickListener {
             navigateToAssignTasks()
+        }
+        binding.btnAnnotationsAndFollowUp.setOnClickListener {
+            navigateToAnnotationsAndFollowUp()
         }
     }
 
@@ -123,6 +127,11 @@ class Start : AppCompatActivity() {
 
     private fun navigateToAssignTasks(){
         val intent = Intent(this, AssignTasks::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToAnnotationsAndFollowUp(){
+        val intent = Intent(this, AnnotationsAndFollowUp::class.java)
         startActivity(intent)
     }
 }
