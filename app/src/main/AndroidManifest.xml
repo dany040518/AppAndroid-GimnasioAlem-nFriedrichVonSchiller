@@ -36,7 +36,7 @@
             android:name=".Messages"
             android:exported="false" />
         <activity
-            android:name=".StudentTracking"
+            android:name=".StudentTracking.StudentTracking"
             android:exported="false" />
         <activity
             android:name=".MyTasks.MyTask"

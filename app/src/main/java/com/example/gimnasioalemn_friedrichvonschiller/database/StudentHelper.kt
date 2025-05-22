@@ -8,7 +8,6 @@ import com.google.firebase.database.ValueEventListener
 import com.example.gimnasioalemn_friedrichvonschiller.model.Annotation
 
 
-
 class StudentHelper {
 
     fun cargarEstudiantesPorGrado(grado: String, callback: (List<String>) -> Unit) {
@@ -53,5 +52,25 @@ class StudentHelper {
                 Log.e("StudentHelper", "Error al guardar anotación: ${error.message}")
                 callback(false) // fallo al guardar
             }
+    }
+
+    fun obtenerAnotacionesPorEstudiante(id:String, callback: (List<Annotation>)-> Unit){
+        val database = FirebaseDatabase.getInstance()
+        val ref = database.getReference("users").child(id).child("student_tracking")
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val anotacionesList = mutableListOf<Annotation>()
+                for (anotacionSnapshot in snapshot.children) {
+                    val anotacion = anotacionSnapshot.getValue(Annotation::class.java)
+                    anotacion?.let { anotacionesList.add(it) }
+                }
+                callback(anotacionesList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("TaskHelper", "Error al obtener anotaciones: ${error.message}")
+                callback(emptyList())
+            }
+        })
     }
 }
