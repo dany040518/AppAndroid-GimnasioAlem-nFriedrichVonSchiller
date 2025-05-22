@@ -5,55 +5,57 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import com.example.gimnasioalemn_friedrichvonschiller.databinding.FragmentCreateMessageBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CreateMessage.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CreateMessage : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var binding: FragmentCreateMessageBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val grados = arrayOf(
+        "Parvulos", "Prekinder", "Kinder", "Kl1", "Kl2", "Kl3", "Kl4", "Kl5",
+        "Kl6", "Kl7", "Kl8", "Kl9", "Kl10", "Kl11", "Kl12"
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_message, container, false)
+        savedInstanceState: Bundle?,
+    ): View {
+        binding = FragmentCreateMessageBinding.inflate(inflater, container, false)
+        initComponents()
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CreateMessage.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CreateMessage().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun initComponents() {
+        // Configurar spinner
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, grados)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerGrado.adapter = adapter
+
+        binding.btnGuardar.setOnClickListener {
+            val gradoSeleccionado = binding.spinnerGrado.selectedItem.toString()
+            val nombreMensaje = binding.etNombreMensaje.text.toString().trim()
+            val descripcionMensaje = binding.etDescripcionMensaje.text.toString().trim()
+
+            if (nombreMensaje.isEmpty()) {
+                binding.etNombreMensaje.error = "Ingresa el nombre del mensaje"
+                binding.etNombreMensaje.requestFocus()
+                return@setOnClickListener
             }
+
+            if (descripcionMensaje.isEmpty()) {
+                binding.etDescripcionMensaje.error = "Ingresa la descripción del mensaje"
+                binding.etDescripcionMensaje.requestFocus()
+                return@setOnClickListener
+            }
+
+            Toast.makeText(requireContext(),
+                "Guardado: $gradoSeleccionado - $nombreMensaje",
+                Toast.LENGTH_SHORT).show()
+
+            binding.etNombreMensaje.text?.clear()
+            binding.etDescripcionMensaje.text?.clear()
+            binding.spinnerGrado.setSelection(0)
+        }
     }
 }

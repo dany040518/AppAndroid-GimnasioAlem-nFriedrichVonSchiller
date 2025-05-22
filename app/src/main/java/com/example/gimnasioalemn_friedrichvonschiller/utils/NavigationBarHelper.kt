@@ -2,6 +2,7 @@ package com.example.gimnasioalemn_friedrichvonschiller.utils
 
 import android.content.Context
 import android.content.Intent
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.gimnasioalemn_friedrichvonschiller.MainActivity
@@ -18,9 +19,9 @@ class NavigationBarHelper(private val context: Context) {
             navigateToStart()
         }
 
-        binding.btnCalendario.setOnClickListener {
-            navigateToCalendar()
-        }
+        //binding.btnCalendario.setOnClickListener {
+            //navigateToCalendar()
+        //}
 
         binding.btnPerfil.setOnClickListener {
             navigateToProfile()
@@ -36,10 +37,10 @@ class NavigationBarHelper(private val context: Context) {
         context.startActivity(intent)
     }
 
-    private fun navigateToCalendar() {
-        val intent = Intent(context, Calendar::class.java)
-        context.startActivity(intent)
-    }
+    //private fun navigateToCalendar() {
+        //val intent = Intent(context, Calendar::class.java)
+        //context.startActivity(intent)
+    //}
 
     private fun navigateToProfile() {
         val intent = Intent(context, Profile::class.java)

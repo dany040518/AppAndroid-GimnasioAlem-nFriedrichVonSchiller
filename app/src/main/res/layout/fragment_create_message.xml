@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/forms_background"
+    android:id="@+id/createMessages"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CreateMessage">
+    android:orientation="vertical"
+    android:padding="20dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Spinner
+        android:id="@+id/spinnerGrado"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/etNombreMensaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Titulo del Anuncio"
+        android:inputType="textPersonName"
+        android:layout_marginTop="16dp" />
+
+    <EditText
+        android:id="@+id/etDescripcionMensaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descripción del Anuncio"
+        android:inputType="textMultiLine"
+        android:minLines="4"
+        android:gravity="top"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:backgroundTint="@color/darkBlue"
+        android:id="@+id/btnGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:layout_marginTop="24dp" />
+
+</LinearLayout>

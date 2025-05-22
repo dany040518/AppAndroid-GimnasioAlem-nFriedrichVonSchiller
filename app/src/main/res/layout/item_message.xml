@@ -14,19 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/ivEdit"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_edit"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:tint="@color/darkBlue"/>
-
         <LinearLayout
             android:id="@+id/layoutDate"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_dark_blue_rounded"
@@ -36,9 +26,7 @@
             android:paddingEnd="10dp"
             android:paddingBottom="4dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/ivEdit"
-            app:layout_constraintBottom_toBottomOf="@id/ivEdit">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:layout_width="20dp"
@@ -87,7 +75,7 @@
         </LinearLayout>
 
         <View
-            android:id="@+id/divider"
+            android:id="@+id/divider1"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="0dp"
@@ -108,10 +96,50 @@
             android:text="Descripcion Actividad"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintTop_toBottomOf="@id/divider1"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/darkGray"
+            app:layout_constraintTop_toBottomOf="@id/tvActivityDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Nombre Actividad con icono estrella -->
+        <LinearLayout
+            android:id="@+id/layoutNameTeacerAnnouncement"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider2">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_user"
+                app:tint="@color/darkBlue"/>
+
+            <TextView
+                android:id="@+id/tvNameTeacerAnnouncement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:paddingStart="8dp"
+                android:text="Nombre Porfesor Anuncio"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

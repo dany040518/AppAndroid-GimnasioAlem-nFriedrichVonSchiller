@@ -1,15 +1,17 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:background="@color/white">
 
     <FrameLayout
         android:id="@+id/FrameTitle"
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
             android:id="@+id/ivFondo"
@@ -36,41 +38,33 @@
             android:textSize="30sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/ivEdit"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_edit"
-            app:tint="@color/white" />
-
     </FrameLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/linearHeader"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@id/FrameTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp">
 
         <TextView
             android:id="@+id/tvAds"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/FrameTitle"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_weight="1"
             android:text="ANUNCIOS"
-            android:textSize="40dp"
+            android:textSize="40sp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/btnMessage"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_gravity="end|top"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="10dp"
             android:background="@drawable/circle_yellow"
             android:scaleType="center"
             android:src="@drawable/ic_add"
@@ -78,13 +72,34 @@
 
     </LinearLayout>
 
-    <include
-        layout="@layout/fragment_menu_navigation_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMessages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/linearHeader"
+        app:layout_constraintBottom_toTopOf="@id/containerCreateMessage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/containerCreateMessage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/linearHeader"
+        app:layout_constraintBottom_toTopOf="@id/menuNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <include
+        android:id="@+id/menuNavigation"
+        layout="@layout/fragment_menu_navigation_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
