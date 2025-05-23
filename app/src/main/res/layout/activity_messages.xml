@@ -75,12 +75,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMessages"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:padding="8dp"
         android:clipToPadding="false"
         app:layout_constraintTop_toBottomOf="@id/linearHeader"
-        app:layout_constraintBottom_toTopOf="@id/containerCreateMessage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -93,6 +92,7 @@
         app:layout_constraintBottom_toTopOf="@id/menuNavigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
     <include
         android:id="@+id/menuNavigation"

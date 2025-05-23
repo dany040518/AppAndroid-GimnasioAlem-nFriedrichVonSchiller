@@ -28,8 +28,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleCalendar"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.2" />
+
+    <ImageView
+        android:id="@+id/btnAddEvent"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/circle_yellow"
+        android:scaleType="center"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_add"
+        app:tint="@color/white" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvEvents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddEvent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <include
         layout="@layout/fragment_menu_navigation_bar"

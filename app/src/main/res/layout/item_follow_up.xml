@@ -14,15 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/ivEdit"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_edit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/darkBlue" />
 
         <LinearLayout
             android:id="@+id/layoutDate"
@@ -35,8 +26,7 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:paddingBottom="4dp"
-            app:layout_constraintBottom_toBottomOf="@id/ivEdit"
-            app:layout_constraintEnd_toStartOf="@id/ivEdit"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -90,7 +80,6 @@
 
         <!-- Nombre docente con icono -->
         <LinearLayout
-            android:id="@+id/layoutNombreDocente"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
@@ -107,6 +96,15 @@
                 android:layout_height="30dp"
                 android:src="@drawable/ic_user"
                 app:tint="@color/darkBlue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:text="Docente:"
+                android:textStyle="bold"
+                android:textColor="#111111"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tvNombreDocente"

@@ -51,7 +51,7 @@ class logIn : AppCompatActivity() {
                             override fun onSuccess(grade: String) {
                                 Toast.makeText(applicationContext, "Acceso exitoso como Estudiante", Toast.LENGTH_SHORT).show()
                                 saveDataStudent(role, userId, fullName, email, phoneNumber, grade)
-                                navigateToStartStudents(userId)
+                                navigateToStart()
                             }
                             override fun onFailure(errorMessage: String) {
                                 Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_SHORT).show()
@@ -66,7 +66,7 @@ class logIn : AppCompatActivity() {
                                 val subjectsString = subjects.joinToString(", ")
 
                                 saveDataTeacher(role, userId, fullName, email, phoneNumber, subjectsString)
-                                navigateToStartTeachers(userId)
+                                navigateToStart()
                             }
                             override fun onFailure(errorMessage: String) {
                                 Toast.makeText(applicationContext, errorMessage, Toast.LENGTH_SHORT).show()
@@ -74,8 +74,8 @@ class logIn : AppCompatActivity() {
                         })
                     } else if (role == "admin") {
                         Toast.makeText(applicationContext, "Acceso exitoso como Administrador", Toast.LENGTH_SHORT).show()
-                        //saveData(userId, fullName, email, phoneNumber)
-                        //navigateToStartAdmin()
+                        saveDataAdmin(role, userId, fullName, email, phoneNumber)
+                        navigateToStart()
                     }
                     finish()
                 } else {
@@ -91,11 +91,7 @@ class logIn : AppCompatActivity() {
         })
     }
 
-    private fun navigateToStartStudents(userId: String) {
-        val intent = Intent(this, Start::class.java)
-        startActivity(intent)
-    }
-    private fun navigateToStartTeachers(userId: String) {
+    private fun navigateToStart() {
         val intent = Intent(this, Start::class.java)
         startActivity(intent)
     }
@@ -121,6 +117,17 @@ class logIn : AppCompatActivity() {
         editor.putString("USER_EMAIL", email)
         editor.putString("USER_PHONE_NUMBER", phoneNumber)
         editor.putString("USER_SUBJECTS", subjects)
+        editor.apply()
+    }
+
+    private fun saveDataAdmin(userRole:String, userId: String, fullName: String, email: String, phoneNumber: String){
+        val sharedPreferences = getSharedPreferences("USER_PREFS", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("USER_ROL", userRole)
+        editor.putString("USER_ID", userId)
+        editor.putString("USER_NAME", fullName)
+        editor.putString("USER_EMAIL", email)
+        editor.putString("USER_PHONE_NUMBER", phoneNumber)
         editor.apply()
     }
 }

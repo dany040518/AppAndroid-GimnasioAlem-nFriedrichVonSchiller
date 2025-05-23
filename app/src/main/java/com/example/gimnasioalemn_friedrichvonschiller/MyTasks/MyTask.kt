@@ -37,10 +37,9 @@ class MyTask : AppCompatActivity() {
     }
 
     private fun getTasks() {
-        val taskHelper = TaskHelper()
         val sharedPreferences = getSharedPreferences("USER_PREFS", MODE_PRIVATE)
         val userId = sharedPreferences.getString("USER_ID", null)
-        taskHelper.obtenerTareasEstudiante(userId.toString()) { tareas ->
+        TaskHelper().obtenerTareasEstudiante(userId.toString()) { tareas ->
             // Aquí recibes la lista de tareas del estudiante con userId 1032676704
             if (tareas.isEmpty())Log.d("Tareas", "No se encontraron tareas")
             else{

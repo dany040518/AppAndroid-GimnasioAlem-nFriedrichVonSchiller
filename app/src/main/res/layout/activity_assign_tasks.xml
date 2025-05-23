@@ -1,85 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/lightGray">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="48dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/menuNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Asignatura de la tarea -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Asignatura"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"/>
-
-        <EditText
-            android:id="@+id/etAsignatura"
+        <!-- Único hijo directo del ScrollView -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese la asignatura"
-            android:inputType="text"
-            android:maxLines="1"
-            android:layout_marginBottom="12dp"/>
-        <!-- Título de la tarea -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Título de la tarea"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"/>
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etTitulo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Ingrese el título"
-            android:inputType="text"
-            android:maxLines="1"
-            android:layout_marginBottom="12dp"/>
+            <!-- Título general en blanco -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NUEVA TAREA"
+                android:textColor="@color/darkBlue"
+                android:textSize="35sp"
+                android:layout_marginTop="20sp"
+                android:fontFamily="sans-serif-black"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="30dp" />
 
-        <!-- Selector de grado -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Seleccione grado"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"/>
+            <!-- Contenedor blanco con bordes redondeados -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/gradient_card"
+                android:padding="24dp"
+                android:elevation="10dp"
+                android:clipToPadding="false"
+                android:layout_marginBottom="24dp"
+                android:scrollbars="none"
+                android:theme="@style/ThemeOverlay.AppCompat.Light">
 
-        <Spinner
-            android:id="@+id/spinnerGrado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"/>
+                <!-- Sección Asignatura -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Asignatura"
+                    android:textColor="@color/yellow"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginBottom="6dp"/>
 
-        <!-- Fecha de entrega -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fecha de entrega"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"/>
+                <Spinner
+                    android:id="@+id/spinnerAsignatura"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@drawable/spinner_bg_custom"
+                    android:popupBackground="@color/white"
+                    android:layout_marginBottom="24dp" />
 
-        <EditText
-            android:id="@+id/etFechaEntrega"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Seleccione la fecha"
-            android:focusable="false"
-            android:clickable="true"
-            android:inputType="date"
-            android:layout_marginBottom="20dp" />
+                <!-- Sección Título tarea -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Título de la tarea"
+                    android:textColor="@color/yellow"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginBottom="6dp"/>
 
-        <!-- Botón para asignar la tarea -->
-        <Button
-            android:id="@+id/btnAsignarTarea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Asignar tarea"/>
+                <EditText
+                    android:id="@+id/etTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@drawable/card_background_white"
+                    android:hint="Escribe el título aquí"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="24dp"/>
 
-    </LinearLayout>
-</ScrollView>
+                <!-- Sección Grado -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grado"
+                    android:textColor="@color/yellow"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginBottom="6dp"/>
+
+                <Spinner
+                    android:id="@+id/spinnerGrado"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@drawable/spinner_bg_custom"
+                    android:popupBackground="@color/white"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Sección Fecha de entrega -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha de entrega"
+                    android:textColor="@color/yellow"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginBottom="6dp"/>
+
+                <EditText
+                    android:id="@+id/etFechaEntrega"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@drawable/card_background_white"
+                    android:hint="Selecciona la fecha"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:inputType="date"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginBottom="36dp"/>
+
+                <!-- Botón asignar tarea -->
+                <Button
+                    android:id="@+id/btnAsignarTarea"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:backgroundTint="@color/yellow"
+                    android:text="Asignar tarea"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-black"
+                    android:elevation="6dp"
+                    android:stateListAnimator="@null"
+                    android:letterSpacing="0.05" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/menuNavigation"
+        layout="@layout/fragment_menu_navigation_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

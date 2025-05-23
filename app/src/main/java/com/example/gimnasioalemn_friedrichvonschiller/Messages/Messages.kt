@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gimnasioalemn_friedrichvonschiller.CreateMessage
 import com.example.gimnasioalemn_friedrichvonschiller.database.MessagesHelper
 import com.example.gimnasioalemn_friedrichvonschiller.databinding.ActivityMessagesBinding
@@ -34,12 +35,12 @@ class Messages : AppCompatActivity() {
         userGrade = sharedPreferences.getString("USER_GRADE", null)
         userName = sharedPreferences.getString("USER_NAME", null)
 
-        setupUI()
+        initUI()
         initComponents()
         loadMessages()
     }
 
-    private fun setupUI() {
+    private fun initUI() {
         // Configurar el menú de navegación
         val navigationBarHelper = NavigationBarHelper(this)
         navigationBarHelper.setupNavigationBar(binding.root)
@@ -48,9 +49,7 @@ class Messages : AppCompatActivity() {
         binding.btnMessage.isEnabled = userRole == "teacher"
 
         binding.tvNameGrade.isVisible = userRole == "student"
-        binding.tvNameGrade.isEnabled = userRole == "student"
         binding.viewBlack.isVisible = userRole == "student"
-        binding.viewBlack.isEnabled = userRole == "student"
 
         binding.tvNameGrade.text = userGrade ?: ""
     }
@@ -87,6 +86,12 @@ class Messages : AppCompatActivity() {
                     onError = { showError(it) }
                 )
             }
+            userRole == "admin" -> {
+                messagesHelper.getAllMessages(
+                    onResult = { messagesList -> setupRecyclerView(messagesList) },
+                    onError = { showError(it) }
+                )
+            }
             else -> {
                 Toast.makeText(this, "Rol o datos de usuario inválidos", Toast.LENGTH_SHORT).show()
             }
@@ -95,6 +100,7 @@ class Messages : AppCompatActivity() {
 
     private fun setupRecyclerView(messagesList: List<Message>) {
         val adapter = MessageAdapter(messagesList)
+        binding.rvMessages.layoutManager = LinearLayoutManager(this)
         binding.rvMessages.adapter = adapter
     }
 
