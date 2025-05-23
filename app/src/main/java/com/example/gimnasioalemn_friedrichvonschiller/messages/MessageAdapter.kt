@@ -1,4 +1,4 @@
-package com.example.gimnasioalemn_friedrichvonschiller.Messages
+package com.example.gimnasioalemn_friedrichvonschiller.messages
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

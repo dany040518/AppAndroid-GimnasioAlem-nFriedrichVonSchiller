@@ -1,4 +1,4 @@
-package com.example.gimnasioalemn_friedrichvonschiller.StudentTracking
+package com.example.gimnasioalemn_friedrichvonschiller.studentTracking
 
 import android.os.Bundle
 import android.util.Log

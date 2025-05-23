@@ -36,16 +36,16 @@
             android:name=".Start"
             android:exported="false" />
         <activity
-            android:name=".Messages.Messages"
+            android:name=".messages.Messages"
             android:exported="false" />
         <activity
-            android:name=".StudentTracking.StudentTracking"
+            android:name=".studentTracking.StudentTracking"
             android:exported="false" />
         <activity
-            android:name=".MyTasks.MyTask"
+            android:name=".myTasks.MyTask"
             android:exported="false" />
         <activity
-            android:name=".Profile.Profile"
+            android:name=".profile.Profile"
             android:exported="false" />
         <activity
             android:name=".logIn"

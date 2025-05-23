@@ -1,4 +1,4 @@
-package com.example.gimnasioalemn_friedrichvonschiller.StudentTracking
+package com.example.gimnasioalemn_friedrichvonschiller.studentTracking
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gimnasioalemn_friedrichvonschiller.model.Annotation

@@ -1,4 +1,4 @@
-package com.example.gimnasioalemn_friedrichvonschiller.Profile
+package com.example.gimnasioalemn_friedrichvonschiller.profile
 
 import android.content.Context
 import android.os.Bundle

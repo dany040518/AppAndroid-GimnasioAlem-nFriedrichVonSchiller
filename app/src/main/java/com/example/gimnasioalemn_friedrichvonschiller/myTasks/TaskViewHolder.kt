@@ -1,4 +1,4 @@
-package com.example.gimnasioalemn_friedrichvonschiller.MyTasks
+package com.example.gimnasioalemn_friedrichvonschiller.myTasks
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
