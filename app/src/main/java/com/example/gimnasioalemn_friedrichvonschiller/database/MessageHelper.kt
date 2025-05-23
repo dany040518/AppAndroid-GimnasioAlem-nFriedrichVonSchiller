@@ -56,4 +56,24 @@ class MessagesHelper {
                 }
             })
     }
+
+    fun getAllMessages(
+        onResult: (List<Message>) -> Unit,
+        onError: (String) -> Unit
+    ) {
+        database.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val messages = mutableListOf<Message>()
+                for (child in snapshot.children) {
+                    val msg = child.getValue(Message::class.java)
+                    if (msg != null) messages.add(msg)
+                }
+                onResult(messages)
+            }
+            override fun onCancelled(error: DatabaseError) {
+                onError(error.message)
+            }
+        })
+    }
+
 }

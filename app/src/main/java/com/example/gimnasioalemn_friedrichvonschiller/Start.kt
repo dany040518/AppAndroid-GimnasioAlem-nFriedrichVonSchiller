@@ -7,8 +7,9 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
-import com.example.gimnasioalemn_friedrichvonschiller.MyTasks.MyTask
-import com.example.gimnasioalemn_friedrichvonschiller.StudentTracking.StudentTracking
+import com.example.gimnasioalemn_friedrichvonschiller.messages.Messages
+import com.example.gimnasioalemn_friedrichvonschiller.myTasks.MyTask
+import com.example.gimnasioalemn_friedrichvonschiller.studentTracking.StudentTracking
 import com.example.gimnasioalemn_friedrichvonschiller.database.DatabaseHelper
 import com.example.gimnasioalemn_friedrichvonschiller.databinding.ActivityStartBinding
 import com.example.gimnasioalemn_friedrichvonschiller.utils.NavigationBarHelper
@@ -50,8 +51,6 @@ class Start : AppCompatActivity() {
 
     private fun initComponents() {
         LoadImgagesInScrollViews()
-        binding.btnClassSchedule.setOnClickListener {
-        }
         binding.btnMessage.setOnClickListener {
             navigateToMessages()
         }

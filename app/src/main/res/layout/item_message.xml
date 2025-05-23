@@ -49,7 +49,7 @@
             android:id="@+id/layoutNameActivity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="6dp"
             android:background="@color/white"
             android:orientation="horizontal"
@@ -74,42 +74,21 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <View
-            android:id="@+id/divider1"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/darkGray"
-            app:layout_constraintTop_toBottomOf="@id/layoutNameActivity"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <!-- Descripción Actividad -->
+        <!-- Descripción -->
         <TextView
             android:id="@+id/tvActivityDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:layout_marginBottom="6dp"
+            android:background="@color/lightGray"
             android:minHeight="60dp"
             android:padding="8dp"
-            android:text="Descripcion Actividad"
+            android:text="Descripcion"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintTop_toBottomOf="@id/divider1"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/layoutNameActivity" />
 
-        <View
-            android:id="@+id/divider2"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/darkGray"
-            app:layout_constraintTop_toBottomOf="@id/tvActivityDescription"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Nombre Actividad con icono estrella -->
         <LinearLayout
@@ -121,7 +100,7 @@
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider2">
+            app:layout_constraintTop_toBottomOf="@id/tvActivityDescription">
 
             <ImageView
                 android:layout_width="30dp"
@@ -130,15 +109,24 @@
                 app:tint="@color/darkBlue"/>
 
             <TextView
-                android:id="@+id/tvNameTeacerAnnouncement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:paddingStart="8dp"
+                android:text="Docente:"
+                android:textStyle="bold"
+                android:textColor="#111111"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvNameTeacherAnnouncement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:paddingStart="8dp"
                 android:text="Nombre Porfesor Anuncio"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp"/>
         </LinearLayout>
 
         <View
@@ -170,6 +158,16 @@
                 app:tint="@color/darkBlue"/>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingStart="8dp"
+                android:text="Grado:"
+                android:textStyle="bold"
+                android:textColor="#111111"
+                android:textSize="16sp" />
+
+            <TextView
                 android:id="@+id/tvGrade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -177,8 +175,7 @@
                 android:paddingStart="8dp"
                 android:text="Grado"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textSize="16sp"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

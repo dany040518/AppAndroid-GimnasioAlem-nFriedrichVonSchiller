@@ -31,12 +31,32 @@
         android:gravity="top"
         android:layout_marginTop="16dp" />
 
-    <Button
-        android:backgroundTint="@color/darkBlue"
-        android:id="@+id/btnGuardar"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Guardar"
-        android:layout_marginTop="24dp" />
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cerrar"
+            android:backgroundTint="@color/darkBlue"
+            android:textColor="@color/white"
+            android:layout_gravity="end"
+            android:layout_marginEnd="110dp" />
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:backgroundTint="@color/darkBlue"
+            android:textColor="@color/white"
+            android:layout_gravity="end" />
+
+    </LinearLayout>
 
 </LinearLayout>

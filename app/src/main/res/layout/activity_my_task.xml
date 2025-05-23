@@ -2,21 +2,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/darkBlue">
 
     <!-- Título de la pantalla -->
     <TextView
         android:id="@+id/titleMisTareas"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mis Tareas"
-        android:textSize="30sp"
+        android:text="MIS TAREAS"
+        android:gravity="center"
+        android:textSize="40sp"
         android:textStyle="bold"
-        android:textColor="@color/darkBlue"
+        android:textColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="20dp"/>
+        android:layout_marginTop="40dp"/>
+
+    <View
+        android:id="@+id/separador"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="8dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/titleMisTareas"/>
 
     <!-- Lista de tareas -->
     <androidx.recyclerview.widget.RecyclerView
@@ -26,7 +34,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@id/titleMisTareas"
+        app:layout_constraintTop_toBottomOf="@id/separador"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

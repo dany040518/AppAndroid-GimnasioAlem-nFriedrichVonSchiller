@@ -98,6 +98,15 @@
                 app:tint="@color/darkBlue" />
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:text="Docente:"
+                android:textStyle="bold"
+                android:textColor="#111111"
+                android:textSize="20sp" />
+
+            <TextView
                 android:id="@+id/tvNombreDocente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

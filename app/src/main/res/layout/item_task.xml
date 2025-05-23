@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/itemContainer"
-    android:layout_width="match_parent"
+    android:layout_width="360dp"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
     android:layout_marginBottom="8dp"
@@ -9,6 +9,7 @@
     android:elevation="4dp"
     android:orientation="vertical"
     android:padding="16dp">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,16 +36,6 @@
         android:layout_marginVertical="8dp"
         android:background="@color/darkGray" />
 
-    <!-- Asignatura debajo -->
-    <TextView
-        android:id="@+id/tvAsignatura"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvTituloTarea"
-        android:layout_marginTop="4dp"
-        android:text="Asignatura"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,29 +43,49 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="200dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/btn_yellow_rounded"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="10dp"
-            android:paddingBottom="4dp">
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:src="@drawable/ic_clock" />
-
+            <!-- Asignatura debajo -->
             <TextView
-                android:id="@+id/tvFecha"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvAsignatura"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:text="Fecha"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_below="@id/tvTituloTarea"
+                android:background="@color/lightGray"
+                android:padding="8dp"
+                android:layout_marginTop="4dp"
+                android:text="Asignatura"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_yellow_rounded"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingBottom="4dp">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_clock" />
+
+                <TextView
+                    android:id="@+id/tvFecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:text="Fecha"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <!-- Estatus indicador lado derecho -->
@@ -83,7 +94,7 @@
             android:layout_width="72dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"

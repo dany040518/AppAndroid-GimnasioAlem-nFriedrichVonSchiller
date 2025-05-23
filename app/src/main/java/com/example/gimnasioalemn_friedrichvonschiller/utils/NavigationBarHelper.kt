@@ -4,9 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.gimnasioalemn_friedrichvonschiller.calendar.Calendar
 import com.example.gimnasioalemn_friedrichvonschiller.MainActivity
 import com.example.gimnasioalemn_friedrichvonschiller.Start
-import com.example.gimnasioalemn_friedrichvonschiller.Profile
+import com.example.gimnasioalemn_friedrichvonschiller.profile.Profile
 import com.example.gimnasioalemn_friedrichvonschiller.databinding.FragmentMenuNavigationBarBinding
 
 class NavigationBarHelper(private val context: Context) {
@@ -17,10 +18,10 @@ class NavigationBarHelper(private val context: Context) {
         binding.btnInicio.setOnClickListener {
             navigateToStart()
         }
-/*
+
         binding.btnCalendario.setOnClickListener {
             navigateToCalendar()
-        }*/
+        }
 
         binding.btnPerfil.setOnClickListener {
             navigateToProfile()
@@ -35,11 +36,11 @@ class NavigationBarHelper(private val context: Context) {
         val intent = Intent(context, Start::class.java)
         context.startActivity(intent)
     }
-/*
+
     private fun navigateToCalendar() {
         val intent = Intent(context, Calendar::class.java)
         context.startActivity(intent)
-    }*/
+    }
 
     private fun navigateToProfile() {
         val intent = Intent(context, Profile::class.java)

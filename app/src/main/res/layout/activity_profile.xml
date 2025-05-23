@@ -156,28 +156,19 @@
         app:layout_constraintTop_toBottomOf="@id/contactCard"
         app:layout_constraintWidth_percent="0.8" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/openDataForm"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/transparentBlue"
-        android:visibility="gone">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0.8"
-            android:src="@color/white" />
-
-        <include
-            layout="@layout/fragment_data_form"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:id="@+id/containerDataForm"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:elevation="8dp"
+        app:layout_constraintTop_toBottomOf="@id/curveContainer"
+        app:layout_constraintBottom_toTopOf="@id/menuNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <include
+        android:id="@+id/menuNavigation"
         layout="@layout/fragment_menu_navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

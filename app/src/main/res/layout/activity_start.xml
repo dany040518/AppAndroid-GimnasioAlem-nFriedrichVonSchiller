@@ -83,14 +83,14 @@
         <!-- Botón Seguimiento Escolar -->
         <FrameLayout
             android:id="@+id/btnStudentTracking"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/btn_dark_blue_rounded">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_school_monitoring" />
@@ -103,45 +103,19 @@
                 android:gravity="center"
                 android:text="Seguimiento Escolar"
                 android:textColor="@android:color/white"
-                android:textSize="13sp" />
-        </FrameLayout>
-
-        <!-- Botón Horario de Clases -->
-        <FrameLayout
-            android:id="@+id/btnClassSchedule"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/btn_dark_blue_rounded">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="top|center_horizontal"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_class_schedule" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:text="Horario de Clases"
-                android:textColor="@android:color/white"
                 android:textSize="15sp" />
         </FrameLayout>
 
         <!-- Botón Mis Tareas -->
         <FrameLayout
             android:id="@+id/btnMyTasks"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:background="@drawable/btn_dark_blue_rounded">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_my_tasks" />
@@ -154,7 +128,7 @@
                 android:gravity="center"
                 android:text="Mis Tareas"
                 android:textColor="@android:color/white"
-                android:textSize="15sp" />
+                android:textSize="16sp" />
         </FrameLayout>
     </LinearLayout>
 
@@ -172,14 +146,14 @@
         <!-- Botón Seguimiento Escolar -->
         <FrameLayout
             android:id="@+id/btnAnnotationsAndFollowUp"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/btn_dark_blue_rounded">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_annotations_and_follow_up" />
@@ -192,45 +166,19 @@
                 android:gravity="center"
                 android:text="Anotaciones y Seguimiento"
                 android:textColor="@android:color/white"
-                android:textSize="12sp" />
-        </FrameLayout>
-
-        <!-- Botón Horario de Clases -->
-        <FrameLayout
-            android:id="@+id/btnMySchedule"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/btn_dark_blue_rounded">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="top|center_horizontal"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_class_schedule" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginBottom="20dp"
-                android:gravity="center"
-                android:text="Mi Horario"
-                android:textColor="@android:color/white"
                 android:textSize="15sp" />
         </FrameLayout>
 
         <!-- Botón Mis Tareas -->
         <FrameLayout
             android:id="@+id/btnAssignTasks"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:background="@drawable/btn_dark_blue_rounded">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_assign_tasks" />
@@ -243,7 +191,7 @@
                 android:gravity="center"
                 android:text="Asignar Tareas"
                 android:textColor="@android:color/white"
-                android:textSize="15sp" />
+                android:textSize="16sp" />
         </FrameLayout>
     </LinearLayout>
 
